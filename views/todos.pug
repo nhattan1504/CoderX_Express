@@ -1,0 +1,8 @@
+h1 List Todos
+a(href="/todos/create") New
+form(action="/todos" method="GET")
+  input(name='q' type='text')
+  button search
+ul
+  each val in todo
+    li= val.active
