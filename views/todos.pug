@@ -1,8 +1,23 @@
 h1 List Todos
 a(href="/todos/create") New
 form(action="/todos" method="GET")
-  input(name='q' type='text')
+  input(name='q' type='text' id='input-field')
   button search
 ul
   each val in todo
-    li= val.active
+    li
+      span=val.active
+      span &nbsp;
+      a(href='/todos/' + val.id + '/delete') Delete
+    
+    
+    
+    
+script.
+    var searchInput = document.getElementById('input-field');
+    var value = searchInput.value;
+    //console.log(value);
+    searchInput.addEventListener('change', function() {
+    sessionStorage.setItem('draft', searchInput.value)})
+    searchInput.value = sessionStorage.getItem('draft');
+
